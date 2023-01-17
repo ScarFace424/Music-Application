@@ -9,12 +9,11 @@ import com.sprunk.projects.musicapplication.exception.AudioReadException;
 
 public class Main {
     static final String TITLE = "Music Application";
-	static final String MUSIC_FILE = "Nightcore - Floating In Love";
-	//static final String FILE_PATH = "/~/projects/MusicApplication";
+	static final String MUSIC_FILE = "  WAV-File ";
 
 	public static void main(String[] args) {
 		Filter filter = new Filter(MUSIC_FILE);
-		//UserInterface.Frame(TITLE, MUSIC_FILE);
+		UserInterface.Frame(TITLE, MUSIC_FILE);
 		AudioFileReader audioFileReader = new AudioFileReader();
 		AudioInputStream audio = null;
 		try {
@@ -22,5 +21,7 @@ public class Main {
 		} catch(AudioReadException are) {
 			System.out.println(are.getMessage());
 		}
+
+		MusicPlayer.play(audio);		
 	}
 }
