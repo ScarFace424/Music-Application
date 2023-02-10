@@ -12,13 +12,20 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import com.sprunk.projects.musicapplication.exception.AudioReadException;
 
-public class AudioFileReader {          //TODO MP3 Files cant be played, find a solution 
-    static final int BIT_RATE = 16;     //WAV files are accepted, but bigger
+public class AudioFileReader {
+    static final int BIT_RATE = 16;     
 
     public AudioInputStream readFile(String fileName) throws AudioReadException {
         Path path = FileSystems.getDefault().getPath("").toAbsolutePath();
-        File file = new File(path + "/musicFiles/" + fileName + ".mp3");    //
-        
+        File file = new File(path + "/musicFiles/" + fileName + ".wav");   
+        try {
+            if (!file.exists()) {
+            throw new UnsupportedAudioFileException();
+            }
+        } catch (UnsupportedAudioFileException uafe) {
+            System.out.println("The MusicFile must not be null!");
+        }
+
         /*
         String pathWithFile = filePath + fileName;
         InputStream fileStream = null;

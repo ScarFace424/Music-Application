@@ -9,19 +9,19 @@ import com.sprunk.projects.musicapplication.exception.AudioReadException;
 
 public class Main {
     static final String TITLE = "Music Application";
-	static final String MUSIC_FILE = "  WAV-File ";
+	static final String MUSIC_FILE = "Nightcore - Floating In Love";
 
 	public static void main(String[] args) {
 		Filter filter = new Filter(MUSIC_FILE);
-		UserInterface.Frame(TITLE, MUSIC_FILE);
+		//UserInterface.Frame(TITLE, MUSIC_FILE);
 		AudioFileReader audioFileReader = new AudioFileReader();
 		AudioInputStream audio = null;
 		try {
 			audio = audioFileReader.readFile(MUSIC_FILE);
 		} catch(AudioReadException are) {
-			System.out.println(are.getMessage());
+			System.out.println("Failed to parse MusicFile into Stream!");
 		}
-
-		MusicPlayer.play(audio);		
+		MusicPlayer.play(audio);	
+		System.out.println("#### Player wird gestartet");	
 	}
 }
